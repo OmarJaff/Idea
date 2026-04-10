@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('image_path')->nullable();
             $table->json('links')->default('[]');
-            $table->enum('status', ['pending', 'in-progress','completed'])->default('pending');
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }
