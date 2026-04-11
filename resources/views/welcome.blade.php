@@ -1,3 +1,3 @@
 <x-layout>
-    HELLO world!
+    <p>Home Page</p>
 </x-layout>
