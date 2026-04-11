@@ -8,7 +8,7 @@
 </head>
 <body class="bg-background text-forground">
 
-    <button class="btn">start</button>
+     <x-layout.nav/>
     <main>
         {{$slot}}
     </main>
