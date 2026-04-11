@@ -16,9 +16,19 @@
 
         <div class="flex gap-x-5">
 
-            <a href="/login">Sign In</a>
+            @auth
+                <form action="/logout" method="post">
+                    @csrf
+                    <button type="submit" class="btn">Log out</button>
+                </form>
+            @endauth
+            @guest
+                    <a href="/login">Sign In</a>
 
-            <a href="/register" class="btn">Register</a>
+                    <a href="/register" class="btn">Register</a>
+            @endguest
+
+
 
         </div>
     </div>
