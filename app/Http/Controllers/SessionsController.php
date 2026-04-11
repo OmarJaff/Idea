@@ -19,16 +19,19 @@ class SessionsController extends Controller
     {
         Session::regenerate();
 
-        $validation = $request->validate([
+        $attributes = $request->validate([
             'email' => ['required', 'max:255'],
             'password' => ['required', 'string'],
         ]);
 
-        if (Auth::attempt($validation)) {
-            return redirect('/');
+        if (!Auth::attempt($attributes)) {
+            return back()
+                ->withErrors(['email' => 'The provided credentails does not match our records'])
+                ->withInput();
         }
+        $request->session()->regenerate();
 
-        return back()->withErrors(['email' => 'The provided credentails does not match our records']);
+        return redirect()->intended('/')->with('success', 'Logged in successfully!');
     }
 
     public function destroy()
