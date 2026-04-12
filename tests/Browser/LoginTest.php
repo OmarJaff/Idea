@@ -24,5 +24,18 @@ it('logs out a user', function () {
     visit('/')->click('@logout-btn');
 
     $this->assertGuest();
-
 });
+
+it('validates the email address and password server side', function () {
+    visit('/login')
+        ->fill('email','')
+        ->fill('password','')
+        ->click('@login-btn')
+        ->assertSee('The email field is required.')
+        ->assertSee('The password field is required.')
+        ->assertPathIs('/login');
+});
+
+
+
+
