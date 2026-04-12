@@ -7,7 +7,7 @@ it('has a route for login page', function () {
 });
 
 it('can login using login form', function () {
-    $user = User::factory()->create(['password'=>'password@123']);
+    $user = User::factory()->create(['password' => 'password@123']);
 
     visit('/login')
         ->fill('email', $user->email)

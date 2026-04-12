@@ -24,7 +24,7 @@ class SessionsController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        if (!Auth::attempt($attributes)) {
+        if (! Auth::attempt($attributes)) {
             return back()
                 ->withErrors(['email' => 'The provided credentails does not match our records'])
                 ->withInput();
