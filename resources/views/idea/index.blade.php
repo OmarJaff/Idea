@@ -10,7 +10,7 @@
             @foreach(\App\IdeaStatus::cases() as $status)
             <a href="/ideas?status={{$status->value}}"
                class="btn {{request('status') === $status->value ? '' : 'btn-outlined'}}">{{$status->value}}
-                <span class="text-xs pl-1">3</span>
+                <span class="text-xs pl-1">{{$statusCounts->get($status->value)}}</span>
             </a>
             @endforeach
 
