@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Facades\Auth;
 
 class Idea extends Model
 {
@@ -37,14 +36,14 @@ class Idea extends Model
         return $this->hasMany(Step::class);
     }
 
-    public static function statusCounts (User $user)
+    public static function statusCounts(User $user)
     {
         $counts = $user->ideas()->selectRaw('status, count(*) as count')
-            ->groupBy('status')->pluck('count','status');
+            ->groupBy('status')->pluck('count', 'status');
 
         return collect(IdeaStatus::cases())
-            ->mapWithKeys(fn($status) => [
-                $status->value => $counts->get($status->value, 0)
+            ->mapWithKeys(fn ($status) => [
+                $status->value => $counts->get($status->value, 0),
             ])
             ->put('All', $user->ideas()->count());
     }

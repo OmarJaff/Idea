@@ -24,8 +24,8 @@ it('can register a user using Register form', function () {
 it('validates the fields from server side', function () {
     visit('/register')
         ->fill('name', '')
-        ->fill('email','')
-        ->fill('password','')
+        ->fill('email', '')
+        ->fill('password', '')
         ->click('@register-btn')
         ->assertSee('The password field is required')
         ->assertSee('The email field is required.')
