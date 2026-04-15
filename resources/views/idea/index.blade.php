@@ -4,6 +4,12 @@
             <h1 class="text-3xl font-bold">Ideas</h1>
             <p class="text-muted-foreground text-sm mt-2">Capture your thoughts. Make a plan.</p>
         </header>
+
+        <div>
+            <a href="/ideas?status=pending"pending">pending</a>
+
+        </div>
+
         <div class="mt-10 text-muted-foreground">
             <div class="grid md:grid-cols-2 gap-6">
                 @forelse($ideas as $idea)
