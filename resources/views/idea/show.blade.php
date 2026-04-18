@@ -1,10 +1,16 @@
 <x-layout>
     <div class="py-8  mx-auto">
-        <div class="flex justify-between">
+        <div class="flex justify-between items-center">
             <a href="{{ route('idea.index') }}" class="flex items-center gap-x-2 text-sm font-medium">
                 <x-lucide-move-left class="h-5 w-5" />
                 Back to Ideas
             </a>
+            <div class="gap-x-3 flex items-center">
+                <button class="btn btn-outlined">
+                    <x-lucide-edit class="h-5 w-5"/>
+                    Edit</button>
+                <button class="btn btn-outlined text-red-500">Delete</button>
+            </div>
         </div>
     </div>
 
