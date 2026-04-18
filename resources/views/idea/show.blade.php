@@ -18,9 +18,17 @@
         </div>
     </div>
 
-    <h1 class="font-bold text-4xl">{{ $idea->title }}</h1>
+    <div class="mt-6 space-y-6">
+        <h1 class="font-bold text-4xl">{{ $idea->title }}</h1>
+        <div class="mt-2 flex gap-x-3 items-center">
+            <x-idea.idea-status :status="$idea->status->value">
+                {{$idea->status->label()}}
+            </x-idea.idea-status>
+            <div class="text-muted-foreground text-sm">{{$idea->created_at->diffForHumans()}}</div>
+        </div>
+        <x-card class="mt-6">
+            <div class="text-foreground max-w-none cursor-pointer">{{ $idea->description }}</div>
+        </x-card>
+    </div>
 
-    <x-card class="mt-6">
-        <div class="text-foreground max-w-none cursor-pointer">{{ $idea->description }}</div>
-    </x-card>
 </x-layout>
