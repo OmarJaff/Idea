@@ -39,7 +39,10 @@
                     <h3 class="font-bold text-lg mt-6">Links</h3>
                     <div>
                         @foreach($idea->links as $link)
-                         <x-card>{{$link}}</x-card>
+
+                         <x-card :href="$link" class="text-primary font-medium flex gap-x-3 items-center">
+                             <x-lucide-external-link class="h-5 w-5" />
+                             {{$link}}</x-card>
                         @endforeach
                     </div>
                 </div>
