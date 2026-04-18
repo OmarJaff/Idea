@@ -73,8 +73,10 @@ class IdeaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Idea $idea): void
+    public function destroy(Idea $idea)
     {
-        //
+        //make sure the user is authorized for this action
+        $idea->delete();
+        return to_route('idea.index');
     }
 }

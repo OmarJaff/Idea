@@ -9,7 +9,11 @@
                 <button class="btn btn-outlined">
                     <x-lucide-edit class="h-5 w-5"/>
                     Edit</button>
-                <button class="btn btn-outlined text-red-500">Delete</button>
+                <form   method="POST" action="{{route('idea.destroy', $idea)}}">
+                    @csrf
+                    @method('DELETE')
+                   <button class="btn btn-outlined text-red-500">Delete</button>
+                </form>
             </div>
         </div>
     </div>
