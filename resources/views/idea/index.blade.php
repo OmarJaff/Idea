@@ -6,9 +6,9 @@
         </header>
         <x-card
             x-data
-            @click="alert('hello world!')"
+            @click="$dispatch('open-modal','create-idea')"
             is="button"
-            class="mt-10 cursor-pointer h-32 w-full text-center">
+            class="mt-10 mb-4 cursor-pointer h-32 w-full text-center">
             <p>What is the idea?</p>
         </x-card>
         <div class="space-x-2">
@@ -44,5 +44,8 @@
                 @endforelse
             </div>
         </div>
+        <x-modal name="create-idea" title="New Idea">
+            <p>slot content</p>
+        </x-modal>
     </div>
 </x-layout>
