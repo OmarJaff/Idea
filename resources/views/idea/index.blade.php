@@ -4,7 +4,13 @@
             <h1 class="text-3xl font-bold">Ideas</h1>
             <p class="text-muted-foreground text-sm mt-2">Capture your thoughts. Make a plan.</p>
         </header>
-
+        <x-card
+            data
+            @click="alert('hello world!')"
+            is="button"
+            class="mt-10 cursor-pointer h-32 w-full text-center">
+            <p>What is the idea?</p>
+        </x-card>
         <div class="space-x-2">
             <a href="/ideas" class="btn {{request()->has('status') ? 'btn-outlined' : ''}}">All</a>
             @foreach(\App\IdeaStatus::cases() as $status)
