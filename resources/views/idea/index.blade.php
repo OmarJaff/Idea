@@ -5,7 +5,7 @@
             <p class="text-muted-foreground text-sm mt-2">Capture your thoughts. Make a plan.</p>
         </header>
         <x-card
-            data
+            x-data
             @click="alert('hello world!')"
             is="button"
             class="mt-10 cursor-pointer h-32 w-full text-center">
