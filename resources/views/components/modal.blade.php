@@ -13,6 +13,7 @@
     x-transition:leave-end="opacity-0 -translate-y-4 -translate-x-4"
     class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-xs"
     role="dialog"
+    style="display: none"
     aria-modal="true"
     aria-labelledby="modal-{{$name}}-title"
     aria-hidden="!show"
