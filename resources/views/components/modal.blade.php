@@ -1,7 +1,7 @@
 @props(['name', 'title'])
 
 <div
-    x-data="{show: false, name: 'create-idea'}"
+    x-data="{show: false, name: '{{$name}}'}"
     x-show="show"
     @open-modal.window="if($event.detail === name) show = true;"
     @keydown.escape.window="show = false"
@@ -19,9 +19,12 @@
     aria-hidden="!show"
     tabindex="-1"
 >
-    <x-card @click.away="show = false">
-        <div>
+    <x-card @click.away="show = false" class="shadow-xl max-w-2xl w-full max-h-[80dvh] overflow-auto">
+        <div class="flex justify-between items-center mb-4">
             <h2 id="modal-{{$name}}-title" class="text-xl font-bold">{{$title}}</h2>
+            <button aria-label="close button">
+                <x-lucide-x class="h-5 w-5 inset-0 left-0" @click="show = false" />
+            </button>
         </div>
          {{$slot}}
     </x-card>

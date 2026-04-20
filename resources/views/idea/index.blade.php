@@ -47,7 +47,10 @@
         <x-modal name="create-idea" title="New Idea">
             <form action="/idea/create" method="post">
                 @csrf
-                
+                <div class="space-y-6">
+                    <x-form.field type="text" name="idea" label="Idea"  placeholder="What is the idea?" autofocus />
+                    <x-form.field type="textarea" label="Description" name="description"  placeholder="describe it more" autofocus />
+                </div>
             </form>
         </x-modal>
     </div>
