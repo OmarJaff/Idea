@@ -44,12 +44,39 @@
                 @endforelse
             </div>
         </div>
-        <x-modal name="create-idea" title="New Idea">
-            <form action="/idea/create" method="post">
+        <x-modal name="create-idea" title="New Idea" >
+            <form x-data="{status: 'pending'}" action="{{route("idea.store")}}" method="POST">
                 @csrf
                 <div class="space-y-6">
-                    <x-form.field type="text" name="idea" label="Idea"  placeholder="What is the idea?" autofocus />
-                    <x-form.field type="textarea" label="Description" name="description"  placeholder="describe it more" autofocus />
+                    <x-form.field
+                        type="text"
+                        name="idea"
+                        label="Idea"
+                        placeholder="What is the idea?"
+                        autofocus />
+
+                    <div>
+                        <label for="status" class="label mb-2">Status</label>
+                        <div class="flex gap-x-3">
+                        @foreach(\App\IdeaStatus::cases() as $status)
+                            <button class="btn flex-1 h-10"
+                                    :class="status === @js($status->value) ? '':'btn-outlined'"
+                                    type="button"
+                                    @click="status = @js($status->value)">
+                                {{$status->label()}}
+                            </button>
+                        @endforeach
+
+                        </div>
+                            <input type="hidden" name="status" class="text-white" :value="status" />
+                    </div>
+
+                    <x-form.field
+                        type="textarea"
+                        label="Description"
+                        name="description"
+                        placeholder="describe it more"
+                        autofocus />
                 </div>
             </form>
         </x-modal>
