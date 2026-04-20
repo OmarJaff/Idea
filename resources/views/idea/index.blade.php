@@ -125,6 +125,7 @@
                             <input
                                 type="url"
                                 id="new-link"
+                                data-test="new-link"
                                 x-model="newLink"
                                 placeholder="http://example.com"
                                 autocomplete="url"
@@ -135,6 +136,7 @@
                             <button
                                 type="button"
                                 @click="links.push(newLink.trim()); newLink = '';"
+                                data-test="add-new-link"
                                 :disabled="newLink === ''"
                                 aria-label="a button to add a url for an idea"
                                 class="disabled:text-gray-500 disabled:cursor-not-allowed form-muted-icon"
