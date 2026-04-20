@@ -11,8 +11,7 @@
         id="{{$name}}"
         name="{{$name}}"
         {{$attributes}}
-        >{{old($name)}}
-        </textarea>
+        >{{old($name)}}</textarea>
     @else
     <input
         type={{$type}}
@@ -23,5 +22,5 @@
         value="{{old($name)}}" />
     @endif
 
-    <x-form.error name="$name" />
+    <x-form.error name="{{$name}}" />
 </div>
