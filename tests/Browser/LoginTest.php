@@ -13,7 +13,7 @@ it('can login using login form', function () {
         ->fill('email', $user->email)
         ->fill('password', 'password@123')
         ->click('@login-btn')
-        ->assertPathIs('/');
+        ->assertPathIs('/ideas');
 
     $this->assertAuthenticated();
 });

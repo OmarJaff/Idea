@@ -12,7 +12,7 @@ it('can register a user using Register form', function () {
         ->fill('email', 'omar@email.com')
         ->fill('password', 'password')
         ->click('@register-btn')
-        ->assertPathIs('/');
+        ->assertPathIs('/ideas');
 
     $this->assertAuthenticated();
 
@@ -30,5 +30,5 @@ it('validates the fields from server side', function () {
         ->assertSee('The password field is required')
         ->assertSee('The email field is required.')
         ->assertSee('The password field is required.')
-        ->assertPathIs('/register')->debug();
+        ->assertPathIs('/register');
 });

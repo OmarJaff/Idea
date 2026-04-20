@@ -36,3 +36,18 @@ it('creates an idea', function () {
         'description' => 'this is description'
     ]);
 });
+
+it('validates the description field', function () {
+    $this->actingAs(User::factory()->create());
+
+    visit('/ideas')
+        ->click('@create-new-idea')
+        ->fill('title', 'a new idea')
+        ->click('@button-status-completed')
+        ->fill('description', '')
+        ->click('Create')
+        ->assertPathIs('/ideas')
+        ->click('@create-new-idea')
+    ->assertsee('The description field is required.');
+
+});
