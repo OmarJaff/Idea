@@ -102,7 +102,7 @@
                         <legend class="label">Links</legend>
 
 
-                        <template x-for="(link,index) in links" >
+                        <template x-for="(link, index) in links" :key='index' >
                             <div class="flex gap-x-2">
 
                             <input  class="input"
