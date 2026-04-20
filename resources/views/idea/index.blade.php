@@ -45,7 +45,10 @@
             </div>
         </div>
         <x-modal name="create-idea" title="New Idea">
-            <p>slot content</p>
+            <form action="/idea/create" method="post">
+                @csrf
+                
+            </form>
         </x-modal>
     </div>
 </x-layout>
