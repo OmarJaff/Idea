@@ -18,7 +18,7 @@ class IdeaController extends Controller
      */
     public function index(Request $request)
     {
-         $ideas = Auth::user()
+        $ideas = Auth::user()
             ->ideas()
             ->when(in_array($request->status, IdeaStatus::values()), fn ($query) => $query->where('status', $request->status))
             ->latest()->get();
@@ -41,9 +41,10 @@ class IdeaController extends Controller
     public function store(StoreIdeaRequest $request)
     {
 
-         Auth::user()->ideas()->create($request->validated());
-         return to_route('idea.index')
-             ->with('success', 'Idea Created!');
+        Auth::user()->ideas()->create($request->validated());
+
+        return to_route('idea.index')
+            ->with('success', 'Idea Created!');
     }
 
     /**
@@ -53,7 +54,7 @@ class IdeaController extends Controller
     {
 
         return view('idea.show', [
-            'idea' => $idea
+            'idea' => $idea,
         ]);
     }
 
@@ -78,8 +79,9 @@ class IdeaController extends Controller
      */
     public function destroy(Idea $idea)
     {
-        //make sure the user is authorized for this action
+        // make sure the user is authorized for this action
         $idea->delete();
+
         return to_route('idea.index');
     }
 }
