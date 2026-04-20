@@ -33,21 +33,26 @@ it('creates an idea', function () {
     expect($user->ideas()->first())->toMatchArray([
         'title' => 'a new idea',
         'status' => 'completed',
-        'description' => 'this is description'
+        'description' => 'this is description',
     ]);
 });
 
-it('validates the description field', function () {
+it('validates the fields server side', function () {
     $this->actingAs(User::factory()->create());
 
-    visit('/ideas')
-        ->click('@create-new-idea')
-        ->fill('title', 'a new idea')
+    $page = visit('/ideas')
+        ->click('@create-new-idea');
+
+    $page->script('document.getElementById("title").removeAttribute("required")');
+    $page->script('document.getElementById("description").removeAttribute("required")');
+
+    $page->fill('title', '')
         ->click('@button-status-completed')
         ->fill('description', '')
         ->click('Create')
         ->assertPathIs('/ideas')
         ->click('@create-new-idea')
-    ->assertsee('The description field is required.');
+        ->assertSee('The description field is required.')
+        ->assertSee('The title field is required');
 
 });

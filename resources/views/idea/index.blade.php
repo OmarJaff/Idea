@@ -89,6 +89,7 @@
                         type="textarea"
                         label="Description"
                         name="description"
+                        required
                         placeholder="describe it more"
                         autofocus />
 
