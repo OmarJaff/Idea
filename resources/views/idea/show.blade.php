@@ -33,7 +33,30 @@
             <div class="text-foreground max-w-none cursor-pointer">{{ $idea->description }}</div>
         </x-card>
 
-        @if($idea->links)
+
+        @if($idea->steps->count())
+
+            <div>
+                <h3 class="font-bold text-lg mt-6">Steps</h3>
+                <div>
+                    @foreach($idea->steps as $step)
+
+                        <x-card>
+                            <div class="flex items-center gap-x-3">
+                                <button class="size-5 flex items-center justify-center rounded-lg text-primary-foreground">
+                                        <x-lucide-check class="h-5 w-5"/>
+                                </button>
+                                <span>{{$step->description}}</span>
+                            </div>
+                        </x-card>
+                    @endforeach
+                </div>
+            </div>
+
+        @endif
+
+
+        @if($idea->links->count())
 
                 <div>
                     <h3 class="font-bold text-lg mt-6">Links</h3>
