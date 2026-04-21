@@ -34,6 +34,17 @@
             <div class="grid md:grid-cols-2 gap-6">
                 @forelse($ideas as $idea)
                     <x-card href="{{route('idea.show',$idea->id)}}">
+
+                        @if($idea->image_path)
+                            <div class="mb-4 -mx-4 -mt-4 rounded-t-lg overflow-hidden">
+
+                                <img class="w-full h-auto object-cover "
+                                     src="{{asset('storage/' . $idea->image_path)}}"
+                                     alt="the idea image">
+
+                            </div>
+                        @endif
+
                         <h3 class="text-foreground text-lg">
                             {{$idea->title}}
                         </h3>
