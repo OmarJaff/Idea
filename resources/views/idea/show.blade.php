@@ -20,6 +20,13 @@
 
     <div class="mt-6 space-y-6">
 
+        @if($idea->image_path)
+            <div class="rounded-lg overflow-hidden">
+                <img class="w-full h-auto object-cover " src="{{asset('storage/' . $idea->image_path)}}" alt="the idea image">
+
+            </div>
+        @endif
+
         <h1 class="font-bold text-4xl">{{ $idea->title }}</h1>
 
         <div class="mt-2 flex gap-x-3 items-center">
@@ -48,10 +55,13 @@
                         <x-card>
                             <div class="flex items-center gap-x-3">
                                 <button type="submit" class="size-5 flex items-center justify-center rounded-lg
-                                text-primary-foreground {{$step->completed ? 'bg-primary':'border border-primary'}}">
+                                text-primary-foreground
+                                 {{$step->completed ? 'bg-primary':'border border-primary'}}"
+                                        role="checkbox"
+                                        aria-checked="{{ $step->completed ? 'true' : 'false' }}"
+                                >
                                     &check; </button>
-                                    <span class="{{$step->completed ? 'line-through text-muted-foreground' : ''}}">{{$step->description}}</span>
-
+                                    <span class=" {{$step->completed ? 'line-through text-muted-foreground' : ''}}">{{$step->description}}</span>
                             </div>
                         </x-card>
                         </form>

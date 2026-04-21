@@ -61,7 +61,9 @@
                     'steps': []
                   }"
                   action="{{route("idea.store")}}"
-                  method="POST">
+                  method="POST"
+                  enctype="multipart/form-data"
+            >
                 @csrf
                 <div class="space-y-6">
                     <x-form.field
@@ -89,6 +91,12 @@
                         </div>
                             <input type="hidden" name="status" id="status" class="text-white" :value="status" />
                         <x-form.error name="status" />
+                    </div>
+
+                    <div>
+                        <label for="image" class="label mb-2">Featured Image</label>
+                        <input type="file" name="image" id="image" accept="image/*" />
+                        <x-form.error name="image" />
                     </div>
 
                     <x-form.field
