@@ -37,18 +37,24 @@
         @if($idea->steps->count())
 
             <div>
-                <h3 class="font-bold text-lg mt-6">Steps</h3>
-                <div>
-                    @foreach($idea->steps as $step)
+                <h3 class="font-bold text-lg mt-6">Actionable Steps</h3>
 
+
+                <div class="mt-3 space-y-3">
+                    @foreach($idea->steps as $step)
+                        <form action="{{route('step.update', $step)}}" method="POST">
+                            @csrf
+                            @method('PATCH')
                         <x-card>
                             <div class="flex items-center gap-x-3">
-                                <button class="size-5 flex items-center justify-center rounded-lg text-primary-foreground">
-                                        <x-lucide-check class="h-5 w-5"/>
-                                </button>
-                                <span>{{$step->description}}</span>
+                                <button type="submit" class="size-5 flex items-center justify-center rounded-lg
+                                text-primary-foreground {{$step->completed ? 'bg-primary':'border border-primary'}}">
+                                    &check; </button>
+                                    <span class="{{$step->completed ? 'line-through text-muted-foreground' : ''}}">{{$step->description}}</span>
+
                             </div>
                         </x-card>
+                        </form>
                     @endforeach
                 </div>
             </div>
