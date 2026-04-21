@@ -39,10 +39,10 @@ class IdeaController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreIdeaRequest $request)
+    public function store(StoreIdeaRequest $request, CreateIdea $action)
     {
 
-        (new CreateIdea())->handel($request->safe()->all());
+        $action->handel($request->safe()->all());
 
         return to_route('idea.index')
             ->with('success', 'Idea Created!');

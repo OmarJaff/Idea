@@ -38,7 +38,7 @@ it('creates an idea', function () {
         'title' => 'a new idea',
         'status' => 'completed',
         'description' => 'this is description',
-        'links' => ['https://laravel.com','https://laracasts.com']
+        'links' => ['https://laravel.com', 'https://laracasts.com'],
     ]);
 });
 

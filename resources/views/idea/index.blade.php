@@ -69,11 +69,12 @@
                     newLink: '',
                     'links': [],
                     newStep: '',
-                    'steps': []
+                    'steps': [],
+                    hasImage: false
                   }"
                   action="{{route("idea.store")}}"
                   method="POST"
-                  enctype="multipart/form-data"
+                  :enctype="hasImage ? 'multipart/form-data' : false"
             >
                 @csrf
                 <div class="space-y-6">
@@ -106,7 +107,8 @@
 
                     <div>
                         <label for="image" class="label mb-2">Featured Image</label>
-                        <input type="file" name="image" id="image" accept="image/*" />
+                        <input type="file" name="image" id="image" accept="image/*"
+                               @change="hasImage = $event.target.files.length > 0" />
                         <x-form.error name="image" />
                     </div>
 
