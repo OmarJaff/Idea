@@ -131,11 +131,13 @@
                                 autocomplete="url"
                                 class="input flex-1"
                                 spellcheck="false"
+                                @keydown.shift.enter="links.push(newLink.trim()); newLink = '';"
                             />
 
                             <button
                                 type="button"
                                 @click="links.push(newLink.trim()); newLink = '';"
+
                                 data-test="add-new-link"
                                 :disabled="newLink === ''"
                                 aria-label="a button to add a url for an idea"
