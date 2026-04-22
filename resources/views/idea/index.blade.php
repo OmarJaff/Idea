@@ -133,13 +133,15 @@
 
                                 <input  class="input"
                                         name="steps[]"
-                                        x-model="step" />
+                                        x-model="step"
+
+                                />
 
                                 <button
                                     type="button"
                                     @click="steps.splice(index,1)"
                                     aria-label="a button to remove a step"
-                                >
+                                 >
                                     <x-lucide-x class="h-5 w-5 form-muted-icon text-white" />
                                 </button>
                             </div>

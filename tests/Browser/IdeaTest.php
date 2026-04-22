@@ -31,15 +31,20 @@ it('creates an idea', function () {
         ->click('@add-new-link')
         ->fill('@new-link', 'https://laracasts.com')
         ->click('@add-new-link')
+        ->fill('@new-step', 'a new step')
+        ->click('@add-new-step')
+        ->fill('@new-step', 'another new step')
+        ->click('@add-new-step')
         ->click('Create')
         ->assertPathIs('/ideas');
 
-    expect($user->ideas()->first())->toMatchArray([
+    expect($idea = $user->ideas()->first())->toMatchArray([
         'title' => 'a new idea',
         'status' => 'completed',
         'description' => 'this is description',
         'links' => ['https://laravel.com', 'https://laracasts.com'],
-    ]);
+    ])
+        ->and($idea->steps)->toHaveCount(2);
 });
 
 it('validates the fields server side', function () {
