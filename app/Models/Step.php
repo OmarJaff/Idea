@@ -18,4 +18,8 @@ class Step extends Model
     {
         return $this->belongsTo(Idea::class);
     }
+
+    protected $casts = [
+        'completed' => 'boolean',
+    ];
 }
