@@ -3,7 +3,7 @@
 <div
     x-data="{show: false, name: '{{$name}}'}"
     x-show="show"
-    @open-modal.window="if($event.detail === name) show = true;"
+    @open-modal.window="if($event.detail === name) show = true"
     @close-modal="show = false"
     @keydown.escape.window="show = false"
     x-transition:enter="ease-out duration-200"

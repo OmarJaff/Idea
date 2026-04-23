@@ -5,9 +5,10 @@
                 <x-lucide-move-left class="h-5 w-5" />
                 Back to Ideas
             </a>
-            <div class="gap-x-3 flex items-center">
-                <button class="btn btn-outlined">
+            <div x-data class="gap-x-3 flex items-center">
+                <button @click="$dispatch('open-modal','update-idea')" class="btn btn-outlined">
                     <x-lucide-edit class="h-5 w-5"/>
+
                     Edit</button>
                 <form   method="POST" action="{{route('idea.destroy', $idea)}}">
                     @csrf
@@ -87,7 +88,8 @@
                 </div>
 
         @endif
-
     </div>
+
+    <x-idea.modal  :idea="$idea" />
 
 </x-layout>
